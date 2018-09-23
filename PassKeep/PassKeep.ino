@@ -54,6 +54,12 @@ char* password[]={"pwOne","pwTwo","pwThree","pwFour","pwFive"};
 //Password Associations
 char* pwNames[]={"passwordOne","passwordTwo","passwordThree","passwordFour","passwordFive"};
 
+//Joystick Variables
+ int joyPin1 = 0;                 // slider variable connecetd to analog pin 0
+ int joyPin2 = 1;                 // slider variable connecetd to analog pin 1
+ int value1 = 0;                  // variable to read the value from the analog pin 0
+ int value2 = 0;                  // variable to read the value from the analog pin 1
+
 
 void setup()
 {
@@ -78,6 +84,10 @@ lcd.setBacklight(HIGH);
 void loop()
 {
  Serial.print(password[1]);
+ void checkFinger();
+ void homeScreen();
+ 
+ 
  
 }
 
@@ -117,6 +127,22 @@ void checkFinger() {
   delay(100);
   
   }
+
+
+
+void homeScreen() {
+if(fingerState = true) {
+
+lcd.setCursor(0,0);
+lcd.print("Please Select Password")
+  
+  
+//fingerState bool check 
+}
+//void homeScreen 
+}
+
+
 
 
 void selectPassword() {
