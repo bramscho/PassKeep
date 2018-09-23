@@ -1,26 +1,14 @@
-/*
- * 
-char* password[]={"passwordOne","passwordTwo","passwordThree","passwordFour","passwordFive"};
+//joystick values
 
-void setup(){
-  Serial.begin(9600);
-  }
-
-  void loop(){
-     Serial.print(password[0]);
-      delay(250);
-         Serial.println(password[1]);
-    delay(250);
-         Serial.println(password[2]);
-      delay(250);
-         Serial.println(password[3]);
-      delay(250);
-         Serial.println(password[4]);
-      delay(250);
-    }
- */
+int yAxis = A5;
+int xAxis = A4;
+int yValue = 0;
+int xValue = 0;
 
 
+
+
+ 
 //Fingerprint Libraries
 #include "FPS_GT511C3.h"
 #include "SoftwareSerial.h"`
@@ -83,13 +71,16 @@ lcd.setBacklight(HIGH);
 
 void loop()
 {
- Serial.print(password[1]);
+ 
  void checkFinger();
- void homeScreen();
- 
- 
- 
-}
+ if(fingerState = true) {
+  
+   void homeScreen();
+   void selectPassword();
+  
+  }
+ }
+
 
 
 
@@ -113,17 +104,11 @@ void checkFinger() {
     else
     {//if unable to recognize
       lcd.setCursor(0,0);
-      lcd.print("Please Try Again")
+      lcd.print("Please press finger")
       delay(2000);
+      fingerState = false;
       lcd.clear();
     }
-  }
-  else
-  {
-    lcd.setCursor(0,0);
-    lcd.print("Please press finger")
-    
-  }
   delay(100);
   
   }
@@ -131,14 +116,10 @@ void checkFinger() {
 
 
 void homeScreen() {
-if(fingerState = true) {
 
 lcd.setCursor(0,0);
 lcd.print("Please Select Password")
   
-  
-//fingerState bool check 
-}
 //void homeScreen 
 }
 
@@ -146,8 +127,89 @@ lcd.print("Please Select Password")
 
 
 void selectPassword() {
-  
-  }
+
+  yValue = analogRead(yAxis);
+  xValue = analogRead(xAxis); 
+
+}
+
+
+
+
+void pwOne(){
+//Password 1 - row 1
+lcd.setCursor(0,0);
+lcd.print(pwNames[0]);
+lcd.print(": ");
+lcd.print(password[0]);
+}
+
+void pwTwo(){
+//Password 2 - row 2
+lcd.setCursor(0,1);
+lcd.print(pwNames[1]);
+lcd.print(": ");
+lcd.print(password[1]);
+}
+
+void pwThree(){
+//Password 2 - row 1
+lcd.setCursor(0,0);
+lcd.print(pwNames[1]);
+lcd.print(": ");
+lcd.print(password[1]);
+}
+
+void pwFour(){
+//Password 3 - row 2
+lcd.setCursor(0,1);
+lcd.print(pwNames[2]);
+lcd.print(": ");
+lcd.print(password[2]);
+}
+
+void pwFive(){
+//Password 3 - row 1
+lcd.setCursor(0,0);
+lcd.print(pwNames[2]);
+lcd.print(": ");
+lcd.print(password[2]);
+}
+
+void pwSix(){
+//Password 4 - row 2
+lcd.setCursor(0,1);
+lcd.print(pwNames[3]);
+lcd.print(": ");
+lcd.print(password[3]);
+}
+
+void pwSeven(){
+//Password 4 - row 1
+lcd.setCursor(0,0);
+lcd.print(pwNames[3]);
+lcd.print(": ");
+lcd.print(password[3]);
+}
+
+void pwEight(){
+//Password 5 - row 2
+lcd.setCursor(0,1);
+lcd.print(pwNames[4]);
+lcd.print(": ");
+lcd.print(password[4]);
+}
+
+void pwNine(){
+//Password 5 - row 1
+lcd.setCursor(0,0);
+lcd.print(pwNames[4]);
+lcd.print(": ");
+lcd.print(password[4]);
+}
+
+
+
 
 
 
@@ -159,4 +221,26 @@ void logOut() {
 
 }
 
+
+
+
+
+
+/*
+  if (yValue > 600) { //down
+
+    
+  }
+  if (yValue < 400) { //up
+
+  }
+  if (xValue > 600) { //right
+
+  }
+  if (xValue < 400) { //left
+
+  }
+  */
+  
+ */
 
