@@ -1,7 +1,7 @@
 //LCD
 
 #include <LiquidCrystal.h> //LCD Library
-const int rs = 8, en = 9, d4 = 10, d5 = 11, d6 = 12, d7 = 13; //LCD Pins
+const int rs = 8, en = 9, d4 = 10, d5 = 16, d6 = 14, d7 = 15; //LCD Pins
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7); //Array to store LCD Pins
 
 
@@ -17,12 +17,13 @@ void setup() {
   pinMode(swButton, INPUT); //Joystick button pin set to INPUT
   Serial.begin(9600); //Begin serial at a baud rate of 9600 bps
   lcd.begin(16, 2); //LCD Format
-
+  Serial.print("it works!");
 }
 
 void loop() {
   // read the state of the pushbutton value:
   buttonState = digitalRead(swButton);
+  
 
   // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
   if (buttonState == HIGH) {
