@@ -1,3 +1,5 @@
+//ADD IN KEYBOARD PRINTING AND FIGNERPRINT - ORDER FINGERPRINT SENSOR
+
 //LCD
 
 #include <LiquidCrystal.h> //LCD Library
@@ -11,28 +13,91 @@ int joyPin2 = 1; //VRy - Y value pin connected to A1
 int swButton = 7; //Joystick Button
 int buttonState = 0; //Joystick Button State
 
+int yValue = 0;
+int xValue = 0;
+
+//Password - For now, passwords are added through code - FUTURE IMPROVEMENT: edit password array through UI
+
+
+char* password[] = {"Password Zero", "Password One", "Password Two", "Password Three"};
+
+char* passwordName[] = {"name zero", "name one", "name two", "name three"};
+
+
+int i = 1;
+
 
 void setup() {
 
   pinMode(swButton, INPUT); //Joystick button pin set to INPUT
   Serial.begin(9600); //Begin serial at a baud rate of 9600 bps
   lcd.begin(16, 2); //LCD Format
-  Serial.print("it works!");
 }
+
+
+
+
 
 void loop() {
   // read the state of the pushbutton value:
-  buttonState = digitalRead(swButton);
+
+
+
+  yValue = analogRead(joyPin2);
+  xValue = analogRead(joyPin1);
+
+
+  scrollPW();
+  selectPW();
   
 
-  // check if the pushbutton is pressed. If it is, the buttonState is HIGH:
-  if (buttonState == HIGH) {
-    // turn LED on:
-    Serial.println("high");
-    delay(250);
+
+}
+
+
+void scrollPW() {
+
+
+  lcd.setCursor(0, 0);
+  lcd.print(passwordName[i]);
+
+  lcd.setCursor(0, 1);
+  lcd.print(passwordName[i + 1]);
+
+
+  if (yValue > 600) { //DOWN
+    i = i++;
+    lcd.setCursor(0, 0);
+    lcd.print(passwordName[i]);
+
+    lcd.setCursor(0, 1);
+    lcd.print(passwordName[i + 1]);
+
   }
-  else {
-    // turn LED off:
-    Serial.print("low");
+  if (yValue < 400) { //UP
+    i = i--;
+    lcd.setCursor(0, 0);
+    lcd.print(passwordName[i]);
+
+    lcd.setCursor(0, 1);
+    lcd.print(passwordName[i + 1]);
+
   }
 }
+
+void selectPW() {
+  
+  buttonState = digitalRead(swButton);
+  if(buttonState == HIGH) {
+    lcd.setCursor(0, 0);
+    lcd.print(passwordName[i]);
+
+        if(buttonState == HIGH) {
+
+          //PRINT PASSWORD
+        }
+        }
+    }
+    
+  
+
