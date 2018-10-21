@@ -3,7 +3,7 @@
 //LCD
 
 #include <LiquidCrystal.h> //LCD Library
-const int rs = 8, en = 9, d4 = 10, d5 = 16, d6 = 14, d7 = 15; //LCD Pins
+const int rs = 8, en = 9, d4 = 10, d5 = 11, d6 = 12, d7 = 13; //LCD Pins
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7); //Array to store LCD Pins
 
 
